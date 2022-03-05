@@ -18,14 +18,14 @@ class MemberRepositoryTest {
     @Transactional
     @Rollback(false)
     public void testMember() throws Exception {
-        Member member = new Member();
-        member.setUsername("memberA");
-        Long savedId = memberRepository.save(member);
-
-        Member findMember = memberRepository.find(savedId);
-
-        Assertions.assertThat(findMember.getId()).isEqualTo(member.getId());
-        Assertions.assertThat(findMember.getUsername()).isEqualTo(member.getUsername());
+//        Member member = new Member();
+//        member.setUsername("memberA");
+//        Long savedId = memberRepository.save(member);
+//
+//        Member findMember = memberRepository.find(savedId);
+//
+//        Assertions.assertThat(findMember.getId()).isEqualTo(member.getId());
+//        Assertions.assertThat(findMember.getUsername()).isEqualTo(member.getUsername());
     }
 
 }
