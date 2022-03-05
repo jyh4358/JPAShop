@@ -20,4 +20,7 @@
    3. 단위 테스트
 
 
-3. 
+3. 상품 도메인 개발
+   1. Item 도메인에 비즈니스 로직 추가
+   2. ItemRepository
+   3. ItemService
