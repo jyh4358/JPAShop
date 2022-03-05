@@ -13,4 +13,11 @@
     3. 엔티티 설계시 주의점
 
 
-2. 
+    
+2. 회원 도메인 개발
+   1. MemberRepository
+   2. MemberService
+   3. 단위 테스트
+
+
+3. 
