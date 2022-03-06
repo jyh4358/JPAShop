@@ -1,6 +1,6 @@
 package jpa.jpashop.repository;
 
-import jpa.jpashop.damain.OrderStatus;
+import jpa.jpashop.domain.OrderStatus;
 import lombok.Getter;
 import lombok.Setter;
 

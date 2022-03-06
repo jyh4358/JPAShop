@@ -1,11 +1,11 @@
 package jpa.jpashop.service;
 
-import jpa.jpashop.damain.Address;
-import jpa.jpashop.damain.Member;
-import jpa.jpashop.damain.Order;
-import jpa.jpashop.damain.OrderStatus;
-import jpa.jpashop.damain.item.Book;
-import jpa.jpashop.damain.item.Item;
+import jpa.jpashop.domain.Address;
+import jpa.jpashop.domain.Member;
+import jpa.jpashop.domain.Order;
+import jpa.jpashop.domain.OrderStatus;
+import jpa.jpashop.domain.item.Book;
+import jpa.jpashop.domain.item.Item;
 import jpa.jpashop.exception.NotEnoughStockException;
 import jpa.jpashop.repository.OrderRepository;
 import org.assertj.core.api.Assertions;

@@ -1,6 +1,6 @@
 package jpa.jpashop.service;
 
-import jpa.jpashop.damain.Member;
+import jpa.jpashop.domain.Member;
 import jpa.jpashop.repository.MemberRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
