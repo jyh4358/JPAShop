@@ -1,7 +1,6 @@
-package jpa.practice.domain.item;
+package jpa.practice.domain;
 
 import jpa.jpashop.exception.NotEnoughStockException;
-import jpa.practice.domain.Category;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -2,7 +2,6 @@ package jpa.practice.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jpa.practice.domain.item.Item;
 import lombok.Getter;
 import lombok.Setter;
 
