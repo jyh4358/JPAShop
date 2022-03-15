@@ -1,30 +1,28 @@
 package jpa.practice.domain;
 
+import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lombok.AccessLevel.*;
+
 @Entity
 @Getter
-@Setter
+@NoArgsConstructor(access = PROTECTED)
 public class Category {
 
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue
     @Column(name = "category_id")
     private Long id;
 
     private String name;
 
-    @ManyToMany
-    @JoinTable(name = "category_item",
-            joinColumns = @JoinColumn(name = "category_id"),
-            inverseJoinColumns = @JoinColumn(name = "item_id")
-    )
-    private List<Item> items = new ArrayList<>();
+    @OneToMany(mappedBy = "category")
+    private List<CategoryItem> categoryItems = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id")
@@ -33,10 +31,15 @@ public class Category {
     @OneToMany(mappedBy = "parent")
     private List<Category> child = new ArrayList<>();
 
+    public Category(String name, List<CategoryItem> categoryItems, Category parent, List<Category> child) {
+        this.name = name;
+        this.categoryItems = categoryItems;
+        this.parent = parent;
+        this.child = child;
+    }
 
-    //==연관관계 메서드==//
-    public void addChildCategory(Category child) {
-        this.child.add(child);
-        child.setParent(this);
+    public void addCategory(Category parent) {
+        this.parent = parent;
+        parent.child.add(this);
     }
 }

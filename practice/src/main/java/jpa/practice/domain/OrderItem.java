@@ -1,63 +1,44 @@
 package jpa.practice.domain;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import jpa.practice.domain.item.Item;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import static lombok.AccessLevel.PROTECTED;
+
 @Entity
-@Table(name = "order_item")
 @Getter
-@Setter
+@NoArgsConstructor(access = PROTECTED)
 public class OrderItem {
 
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue
     @Column(name = "order_item_id")
     private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
+    private Order order;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id")
     private Item item;
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id")
-    private Order order;
-
     private int orderPrice;
-
     private int count;
 
-    // 비즈니스 로직 추가
+    public OrderItem(Order order, Item item, int orderPrice, int count) {
+        this.order = order;
+        this.item = item;
+        this.orderPrice = orderPrice;
+        this.count = count;
+    }
 
-    /**
-     *  생성 메서드
-     */
-    public static OrderItem createOrderItem(Item item, int orderPrice, int count) {
-        OrderItem orderItem = new OrderItem();
-        orderItem.setItem(item);
-        orderItem.setOrderPrice(orderPrice);
-        orderItem.setCount(count);
-
-        item.removeStrock(count);
-        return orderItem;
+    public void setOrder(Order order) {
+        this.order = order;
+        order.getOrderItems().add(this);
     }
 
 
-    /**
-     *  주문 취소
-     */
-    public void cancel() {
-        getItem().addStock(count);
-    }
-
-    /**
-     *  주문상품 전체 가격 조회
-     */
-    public int getTotalPrice() {
-        return getOrderPrice() * getCount();
-    }
 }

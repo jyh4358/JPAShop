@@ -1,28 +1,29 @@
 package jpa.practice.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import static lombok.AccessLevel.PROTECTED;
+
 @Entity
 @Getter
-@Setter
+@NoArgsConstructor(access = PROTECTED)
 public class Delivery {
 
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue
     @Column(name = "delivery_id")
     private Long id;
-
-    @JsonIgnore
-    @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
-    private Order order;
 
     @Embedded
     private Address address;
 
     @Enumerated(EnumType.STRING)
     private DeliveryStatus status;
+
+    public Delivery(Address address, DeliveryStatus status) {
+        this.address = address;
+        this.status = status;
+    }
 }
