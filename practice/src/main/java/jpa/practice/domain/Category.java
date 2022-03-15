@@ -31,11 +31,8 @@ public class Category {
     @OneToMany(mappedBy = "parent")
     private List<Category> child = new ArrayList<>();
 
-    public Category(String name, List<CategoryItem> categoryItems, Category parent, List<Category> child) {
+    public Category(String name) {
         this.name = name;
-        this.categoryItems = categoryItems;
-        this.parent = parent;
-        this.child = child;
     }
 
     public void addCategory(Category parent) {
