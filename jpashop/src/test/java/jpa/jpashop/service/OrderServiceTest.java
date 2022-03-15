@@ -18,6 +18,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @Transactional
@@ -46,7 +48,7 @@ class OrderServiceTest {
 
         Assertions.assertThat(getOrder.getStatus()).isEqualTo(OrderStatus.ORDER);
         Assertions.assertThat(1).isEqualTo(getOrder.getOrderItems().size());
-        Assertions.assertThat(10000 * 2).isEqualTo(getOrder.getTotalPrice());
+        Assertions.assertThat(10000 * orderCount).isEqualTo(getOrder.getTotalPrice());
         Assertions.assertThat(8).isEqualTo(book.getStockQuantity());
 
     }
@@ -94,7 +96,7 @@ class OrderServiceTest {
 
         int orderCount = 11;
         //then
-        org.junit.jupiter.api.Assertions.assertThrows(
+        assertThrows(
                 NotEnoughStockException.class, ()-> {
                     orderService.order(member.getId(), item.getId(), orderCount);
                 }

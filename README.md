@@ -81,3 +81,5 @@
 - 도메인 설계 복습
 - 회원 Repository, Service 복습
 - 회원 기능 단위 테스트
+- 상품 Repository, Service 복습
+- 상품 기능 단위 테스트
