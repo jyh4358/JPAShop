@@ -78,8 +78,18 @@
 
 22.03.15
 
-- 도메인 설계 복습
-- 회원 Repository, Service 복습
-- 회원 기능 단위 테스트
-- 상품 Repository, Service 복습
-- 상품 기능 단위 테스트
+- practice
+  - 도메인 설계 복습
+  - 회원 Repository, Service 복습
+  - 회원 기능 단위 테스트
+  - 상품 Repository, Service 복습
+  - 상품 기능 단위 테스트
+
+22.03.16
+
+- practice2
+  - 도메인 설계 복습
+    - ManyToMany -> OneToMany ManytoOne 관계로 변경
+
+  
+
