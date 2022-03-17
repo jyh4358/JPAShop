@@ -21,7 +21,15 @@ public class Delivery {
     @Enumerated(EnumType.STRING)
     private DeliveryStatus status;
 
-    public Delivery(DeliveryStatus status) {
-        this.status = status;
+    @Embedded
+    private Address address;
+
+    public Delivery(Address address) {
+        this.status =  DeliveryStatus.READY;
+        this.address = address;
+    }
+
+    public void addOrder(Order order) {
+        this.order = order;
     }
 }

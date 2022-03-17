@@ -91,5 +91,12 @@
   - 도메인 설계 복습
     - ManyToMany -> OneToMany ManytoOne 관계로 변경
 
+22.03.17
+
+- practice2
+  - 회원 Repository, Service 복습
+  - 상품 Repository, Service 복습
+  - 주문 Repository, Service 복습
+
   
 

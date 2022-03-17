@@ -16,8 +16,8 @@ public class Movie extends Item{
     private String director;
     private String actor;
 
-    public Movie(String name, int price, int stockQuantity, List<CategoryItem> categoryItems, String director, String actor) {
-        super(name, price, stockQuantity, categoryItems);
+    public Movie(String name, int price, int stockQuantity, String director, String actor) {
+        super(name, price, stockQuantity);
         this.director = director;
         this.actor = actor;
     }

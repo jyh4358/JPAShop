@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: C##jpa
+    password: 1234
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database: oracle
+    database-platform: org.hibernate.dialect.Oracle12cDialect
+    properties:
+      hibernate:
+        format_sql: true
+
+
+#      show_sql: true
+
+
+
+logging.level:
+  org.hibernate.SQL: debug
+#  org.hibernate.type: trace

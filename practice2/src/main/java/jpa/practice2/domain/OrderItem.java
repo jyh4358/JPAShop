@@ -2,6 +2,7 @@ package jpa.practice2.domain;
 
 import jpa.practice2.domain.item.Item;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -33,5 +34,24 @@ public class OrderItem {
         this.item = item;
         this.orderPrice = orderPrice;
         this.count = count;
+    }
+
+    public static OrderItem createOrderItem(Item item, int orderPrice, int count) {
+        OrderItem orderItem = new OrderItem(item, orderPrice, count);
+        item.removeStrock(count);
+        return orderItem;
+    }
+
+
+    public void addOrder(Order order) {
+        this.order = order;
+    }
+
+    public void cancel() {
+        item.plusStock(count);
+    }
+
+    public int getTotalPrice() {
+        return orderPrice * count;
     }
 }
