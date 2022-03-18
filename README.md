@@ -98,5 +98,10 @@
   - 상품 Repository, Service 복습
   - 주문 Repository, Service 복습
 
+22.03.18
+
+- practice2
+  - 웹 계층 개발 복습
+
   
 
