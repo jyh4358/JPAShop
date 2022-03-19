@@ -20,12 +20,12 @@ public class OrderItem {
     private Long id;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "ordr_id")
-    private Order order;
-
-    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "item_id")
     private Item item;
+
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "order_id")
+    private Order order;
 
     private int orderPrice;
     private int count;
@@ -38,20 +38,20 @@ public class OrderItem {
 
     public static OrderItem createOrderItem(Item item, int orderPrice, int count) {
         OrderItem orderItem = new OrderItem(item, orderPrice, count);
-        item.removeStrock(count);
+        item.removeStock(count);
         return orderItem;
     }
 
 
-    public void addOrder(Order order) {
+    public void insertOrder(Order order) {
         this.order = order;
     }
 
     public void cancel() {
-        item.plusStock(count);
+        item.addStock(count);
     }
 
     public int getTotalPrice() {
-        return orderPrice * count;
+        return getOrderPrice() * getCount();
     }
 }

@@ -16,14 +16,14 @@ import java.util.List;
 public abstract class Item {
 
     @Id @GeneratedValue
-    @Column
+    @Column(name = "item_id")
     private Long id;
 
     private String name;
     private int price;
     private int stockQuantity;
 
-    @OneToMany(mappedBy = "item")
+    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
     private List<CategoryItem> categoryItems = new ArrayList<>();
 
     public Item(String name, int price, int stockQuantity) {
@@ -32,14 +32,28 @@ public abstract class Item {
         this.stockQuantity = stockQuantity;
     }
 
-    public void plusStock(int count) {
+    public void addCategoryItem(CategoryItem categoryItem) {
+        categoryItems.add(categoryItem);
+        categoryItem.insertItem(this);
+    }
+
+
+    public void addStock(int count) {
         this.stockQuantity += count;
     }
 
-    public void removeStrock(int quantity) {
-        int restQuantity = this.stockQuantity - quantity;
+    public void removeStock(int count) {
+        int restQuantity = stockQuantity - count;
+
         if (restQuantity < 0) {
             throw new NotEnoughStockException("need more stock");
         }
+        this.stockQuantity = restQuantity;
+    }
+
+    public void changeItem(String name, int price, int stockQuantity) {
+        this.name = name;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
     }
 }

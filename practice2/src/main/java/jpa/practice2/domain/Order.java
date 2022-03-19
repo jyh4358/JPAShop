@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.persistence.EnumType.STRING;
 import static javax.persistence.FetchType.*;
 
 @Entity
@@ -30,54 +31,47 @@ public class Order {
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
-
     @OneToOne(fetch = LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
 
     private LocalDateTime orderDate;
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated(STRING)
     private OrderStatus status;
 
-
-    public Order(Member member, Delivery delivery, OrderStatus status) {
-        this.member = member;
-        this.delivery = delivery;
-        this.status = status;
-    }
-
-    public void addMember(Member member) {
+    //==연관관계 메서드==//
+    public void insertMember(Member member) {
         this.member = member;
         member.getOrders().add(this);
     }
-
-    public void addDelivery(Delivery delivery) {
+    public void addOrderItem(OrderItem orderItem) {
+        orderItems.add(orderItem);
+        orderItem.insertOrder(this);
+    }
+    public void insertDelivery(Delivery delivery) {
         this.delivery = delivery;
-        delivery.addOrder(this);
+        delivery.insertOrder(this);
     }
 
-    public void addOrderItem(OrderItem orderItem) {
-        this.orderItems.add(orderItem);
-        orderItem.addOrder(this);
+    public Order(Member member) {
+        this.member = member;
+        this.orderDate = LocalDateTime.now();
+        this.status = OrderStatus.ORDER;
     }
 
     public static Order createOrder(Member member, Delivery delivery, OrderItem... orderItems) {
-        Order order = new Order(member, delivery, OrderStatus.ORDER);
+        Order order = new Order(member);
         for (OrderItem orderItem : orderItems) {
             order.addOrderItem(orderItem);
         }
-        order.addOrderDate(LocalDateTime.now());
+        order.insertDelivery(delivery);
         return order;
-    }
-
-    private void addOrderDate(LocalDateTime now) {
-        this.orderDate = now;
     }
 
     public void cancel() {
         if (delivery.getStatus() == DeliveryStatus.COMP) {
-            throw new IllegalStateException("이미 배송완료된 상품은 취소가 불가능합니다");
+            throw new IllegalStateException("이미 배송완료된 상품은 취소가 불가능합니다.");
         }
         this.status = OrderStatus.CANCEL;
         for (OrderItem orderItem : orderItems) {
@@ -92,7 +86,5 @@ public class Order {
         }
         return totalPrice;
     }
-
-
 
 }

@@ -33,7 +33,7 @@ public class MemberService {
     @Transactional
     public void update(Long id, String name) {
         Member member = memberRepository.findOne(id);
-        member.changName(name);
+        member.changeName(name);
     }
 
     private void validateDuplicateMember(Member member) {

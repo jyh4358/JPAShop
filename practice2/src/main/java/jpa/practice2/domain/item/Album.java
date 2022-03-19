@@ -21,4 +21,12 @@ public class Album extends Item{
         this.artist = artist;
         this.etc = etc;
     }
+
+    public static Item createAlbum(String name, int price, int stockQuantity, String artist, String etc, CategoryItem... categoryItems) {
+        Item album = new Album(name, price, stockQuantity, artist, etc);
+        for (CategoryItem categoryItem : categoryItems) {
+            album.addCategoryItem(categoryItem);
+        }
+        return album;
+    }
 }

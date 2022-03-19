@@ -28,8 +28,11 @@ public class CategoryItem {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    public CategoryItem(Item item, Category category) {
-        this.item = item;
+    public CategoryItem(Category category) {
         this.category = category;
+    }
+
+    public void insertItem(Item item) {
+        this.item = item;
     }
 }

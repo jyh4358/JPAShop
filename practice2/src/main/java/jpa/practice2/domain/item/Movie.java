@@ -21,4 +21,12 @@ public class Movie extends Item{
         this.director = director;
         this.actor = actor;
     }
+
+    public static Item createMovie(String name, int price, int stockQuantity, String director, String actor, CategoryItem... categoryItems) {
+        Item movie = new Movie(name, price, stockQuantity, director, actor);
+        for (CategoryItem categoryItem : categoryItems) {
+            movie.addCategoryItem(categoryItem);
+        }
+        return movie;
+    }
 }

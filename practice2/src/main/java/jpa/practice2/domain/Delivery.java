@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import static javax.persistence.EnumType.STRING;
+
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -16,20 +18,20 @@ public class Delivery {
     private Long id;
 
     @OneToOne(mappedBy = "delivery")
-    private Order order;
-
-    @Enumerated(EnumType.STRING)
-    private DeliveryStatus status;
+    private Order oder;
 
     @Embedded
     private Address address;
 
+    @Enumerated(STRING)
+    private DeliveryStatus status;
+
     public Delivery(Address address) {
-        this.status =  DeliveryStatus.READY;
         this.address = address;
+        this.status = DeliveryStatus.READY;
     }
 
-    public void addOrder(Order order) {
-        this.order = order;
+    public void insertOrder(Order order) {
+        this.oder = order;
     }
 }

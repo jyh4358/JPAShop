@@ -21,4 +21,11 @@ public class Book extends Item{
         this.author = author;
         this.isbn = isbn;
     }
+    public static Item createBook(String name, int price, int stockQuantity, String author, String isbn, CategoryItem... categoryItems) {
+        Item book = new Book(name, price, stockQuantity, author, isbn);
+        for (CategoryItem categoryItem : categoryItems) {
+            book.addCategoryItem(categoryItem);
+        }
+        return book;
+    }
 }

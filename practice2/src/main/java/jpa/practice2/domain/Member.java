@@ -23,7 +23,7 @@ public class Member {
     private Address address;
 
     @OneToMany(mappedBy = "member")
-    private List<Order> orders = new ArrayList<>();
+    List<Order> orders = new ArrayList<>();
 
 
     public Member(String name, Address address) {
@@ -31,7 +31,7 @@ public class Member {
         this.address = address;
     }
 
-    public void changName(String name) {
+    public void changeName(String name) {
         this.name = name;
     }
 }
