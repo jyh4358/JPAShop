@@ -103,5 +103,12 @@
 - practice2
   - 웹 계층 개발 복습
 
+22.03.19
+
+- practice2 리펙토링
+  - setter 삭제
+  - Category, Item 연관관계 설정 및 테스트
+  - Order 테스트
+
   
 
