@@ -27,7 +27,7 @@ public class OrderService {
     @Transactional
     public Long order(Long memberId, Long itemId, int count) {
 
-        Member member = memberRepository.findOne(memberId);
+        Member member = memberRepository.findMember(memberId);
         Item item = itemRepository.findById(itemId);
 
         Delivery delivery = new Delivery(member.getAddress());
@@ -35,6 +35,7 @@ public class OrderService {
         OrderItem orderItem = OrderItem.createOrderItem(item, item.getPrice(), count);
 
         Order order = Order.createOrder(member, delivery, orderItem);
+
 
         orderRepository.save(order);
 

@@ -23,7 +23,7 @@ class ItemTest {
     EntityManager em;
 
     @Test
-    @Rollback(value = false)
+//    @Rollback(value = false)
     @DisplayName("상품 저장 테스트")
     public void itemSaveTest() {
         Item book = new Book("JPA", 10000, 10, "김영한", "123");
@@ -39,7 +39,7 @@ class ItemTest {
     }
 
     @Test
-    @Rollback(value = false)
+//    @Rollback(value = false)
     @DisplayName("상품 저장 테스트")
     public void itemFindTest() {
         Item book = new Book("JPA", 10000, 10, "김영한", "123");

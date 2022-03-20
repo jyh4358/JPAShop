@@ -59,7 +59,7 @@
    2. 페치 조인으로 성능을 최적화 하는 방법
    3. DTO로 직접 조최하는 방법
 
----
+
 
 22.03.12
 
@@ -68,6 +68,8 @@
    2. 페이징과 한계
    3. DTO로 직접 조회
 
+
+---
 
 
 ## 복습
@@ -109,6 +111,13 @@
   - setter 삭제
   - Category, Item 연관관계 설정 및 테스트
   - Order 테스트
+
+22.03.19
+
+- practice2
+  - OrderService 검색 기능 추가
+  - MemberService 테스트
+  - OrderService 테스트
 
   
 

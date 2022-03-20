@@ -26,19 +26,19 @@ public class MemberService {
         return memberRepository.findAll();
     }
 
-    public Member findOne(Long id) {
-        return memberRepository.findOne(id);
+    public Member findMember(Long id) {
+        return memberRepository.findMember(id);
     }
 
     @Transactional
     public void update(Long id, String name) {
-        Member member = memberRepository.findOne(id);
+        Member member = memberRepository.findMember(id);
         member.changeName(name);
     }
 
     private void validateDuplicateMember(Member member) {
         List<Member> findMember = memberRepository.findByName(member.getName());
-        if (findMember != null) {
+        if (!findMember.isEmpty()) {
             throw new IllegalStateException("이미 존재하는 회원입니다.");
         }
     }
