@@ -8,6 +8,7 @@ import jpa.practice2.domain.item.Item;
 import jpa.practice2.repository.ItemRepository;
 import jpa.practice2.repository.MemberRepository;
 import jpa.practice2.repository.OrderRepository;
+import jpa.practice2.repository.OrderSearch;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -51,6 +52,9 @@ public class OrderService {
         order.cancel();
     }
 
+    public List<Order> findOrders(OrderSearch orderSearch) {
+        return orderRepository.findAllByString(orderSearch);
+    }
 
 
 

@@ -23,6 +23,18 @@
    2. ItemRepository
    3. ItemService
 
+
+4. 주문 도메인 개발
+   1. Order 비즈니스 로직 추가
+   2. OrderRepository
+   3. OrderService
+
+5. API 개발 기본
+    1. 회원 등록 API
+    2. 회원 수정 API
+    3. 회원 조회 API
+
+
 ---
 
 22.03.06
