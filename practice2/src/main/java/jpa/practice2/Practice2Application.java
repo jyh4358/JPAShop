@@ -1,7 +1,9 @@
 package jpa.practice2;
 
+import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class Practice2Application {
@@ -10,4 +12,8 @@ public class Practice2Application {
 		SpringApplication.run(Practice2Application.class, args);
 	}
 
+	@Bean
+	Hibernate5Module hibernate5Module() {
+		return new Hibernate5Module();
+	}
 }

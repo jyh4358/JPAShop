@@ -86,8 +86,8 @@ public class MemberApiController {
 
     @PostConstruct
     public void init() {
-        Member member1 = new Member("user1", new Address("서울", "노원", "111"));
-        Member member2 = new Member("user2", new Address("서울", "강북", "222"));
+        Member member1 = new Member("user3", new Address("서울", "노원", "111"));
+        Member member2 = new Member("user4", new Address("서울", "강북", "222"));
 
         memberService.join(member1);
         memberService.join(member2);

@@ -1,4 +1,4 @@
-package jpa.practice2.repository;
+package jpa.practice2.repository.order;
 
 import jpa.practice2.domain.OrderStatus;
 import lombok.AccessLevel;

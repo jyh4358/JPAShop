@@ -1,4 +1,4 @@
-package jpa.practice2.repository;
+package jpa.practice2.repository.order;
 
 import jpa.practice2.domain.Order;
 import lombok.RequiredArgsConstructor;
@@ -56,5 +56,14 @@ public class OrderRepository {
             query = query.setParameter("name", orderSearch.getMemberName());
         }
         return query.getResultList();
+    }
+
+    public List<Order> findAllWithMemberDelivery() {
+        List<Order> resultList = em.createQuery(
+                        "select o from Order o" +
+                                " join fetch o.member m" +
+                                " join fetch o.delivery d", Order.class)
+                .getResultList();
+        return resultList;
     }
 }

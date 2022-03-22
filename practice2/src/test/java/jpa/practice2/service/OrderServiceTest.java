@@ -4,17 +4,17 @@ import jpa.practice2.domain.*;
 import jpa.practice2.domain.item.Book;
 import jpa.practice2.domain.item.Item;
 import jpa.practice2.exception.NotEnoughStockException;
-import jpa.practice2.repository.MemberRepository;
-import jpa.practice2.repository.OrderRepository;
+import jpa.practice2.repository.order.OrderRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -88,8 +88,25 @@ class OrderServiceTest {
         Item item = Book.createBook("JPA", 10000, 100, "김영한", "123", categoryItem1, categoryItem2);
         em.persist(item);
 
-        assertThrows(NotEnoughStockException.class, () ->{
+        assertThrows(NotEnoughStockException.class, () -> {
             orderService.order(member1.getId(), item.getId(), 100);
         });
+    }
+
+    @Test
+    @DisplayName("페치조인과 이너조인의 차이")
+    public void joinTest() {
+
+        List<Order> resultList = em.createQuery(
+                        "select o from Order o" +
+                                " inner join o.member m" +
+                                " inner join o.delivery d", Order.class)
+                .getResultList();
+
+        List<Order> resultList1 = em.createQuery(
+                        "select o from Order o" +
+                                " join fetch o.member m" +
+                                " join fetch o.delivery d", Order.class)
+                .getResultList();
     }
 }

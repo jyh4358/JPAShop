@@ -34,8 +34,7 @@
     2. 회원 수정 API
     3. 회원 조회 API
 
-
----
+    
 
 22.03.06
 
@@ -55,9 +54,11 @@
    5. 상품 목록
    6. 상품 수정
    7. 상품 주문, 검색, 취소
+   
 
----
 22.03.08
+
+정리 : [API 기본](https://jddng.tistory.com/330)
 
 1. api 기본(JSON 바인딩) - MemberApiController
    1. 회원 등록 API 
@@ -65,6 +66,8 @@
    3. 회원 조회 API
 
 22.03.09
+
+정리 : [API 개발 고급 - 조회 성능 최적화](https://jddng.tistory.com/332)
 
 1. api ManyToOne, OneToOne 조회 성능 최적화
    1. 엔티티를 DTO로 변환하는 방법
@@ -130,6 +133,13 @@
   - OrderService 검색 기능 추가
   - MemberService 테스트
   - OrderService 테스트
+
+22.03.22
+
+- practice2
+  - API 개발 고급
+    - 엔티티를 DTO로 변환(페치 조인 최적화)
+    - JPA에서 DTO로 바로 조회하는 방법
 
   
 

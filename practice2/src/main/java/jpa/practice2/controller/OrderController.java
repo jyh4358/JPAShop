@@ -3,7 +3,7 @@ package jpa.practice2.controller;
 import jpa.practice2.domain.Member;
 import jpa.practice2.domain.Order;
 import jpa.practice2.domain.item.Item;
-import jpa.practice2.repository.OrderSearch;
+import jpa.practice2.repository.order.OrderSearch;
 import jpa.practice2.service.ItemService;
 import jpa.practice2.service.MemberService;
 import jpa.practice2.service.OrderService;
