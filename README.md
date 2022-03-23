@@ -1,6 +1,6 @@
 # Spring Boot와 JPA
 
-
+김영한님의 [실전!스프링 부트와 JPA 활용1,2](https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-JPA-API%EA%B0%9C%EB%B0%9C-%EC%84%B1%EB%8A%A5%EC%B5%9C%EC%A0%81%ED%99%94/dashboard) 강의 공부 공간입니다.
 
 ## 구현 내용
 
@@ -28,13 +28,7 @@
    1. Order 비즈니스 로직 추가
    2. OrderRepository
    3. OrderService
-
-5. API 개발 기본
-    1. 회원 등록 API
-    2. 회원 수정 API
-    3. 회원 조회 API
-
-    
+   
 
 22.03.06
 
@@ -77,6 +71,8 @@
 
 
 22.03.12
+
+정리 : [API 개발 고급 - 컬렉션 조회 최적화](https://jddng.tistory.com/333)
 
 1. api Collection 조회 최적화
    1. 페치 조인 최적화
@@ -137,9 +133,14 @@
 22.03.22
 
 - practice2
-  - API 개발 고급
+  - API 개발 고급(xxToOne 성능 최적화)
     - 엔티티를 DTO로 변환(페치 조인 최적화)
-    - JPA에서 DTO로 바로 조회하는 방법
+    - JPA에서 DTO로 직접 조회하는 방법
 
-  
+22.03.23
+
+- practice2
+  - API 개발 고급(xxToMany 컬렉션 조회 최적화)
+    - 엔티티를 DTO로 변환(페치 조인 최적화)
+    - JPA에서 DTO로 직접 조회하는 방법
 
