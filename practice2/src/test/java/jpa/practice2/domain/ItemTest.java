@@ -9,6 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,23 +24,24 @@ class ItemTest {
     EntityManager em;
 
     @Test
-//    @Rollback(value = false)
+    @Rollback(value = false)
     @DisplayName("상품 저장 테스트")
     public void itemSaveTest() {
-        Item book = new Book("JPA", 10000, 10, "김영한", "123");
+        Book book = new Book("JPA", 10000000, 10000, "김영한", "123");
 
         em.persist(book);
 
         em.flush();
         em.clear();
 
-        Item item = em.find(Item.class, book.getId());
+        Book item = (Book)em.find(Item.class, book.getId());
 
         Assertions.assertThat(item.getName()).isEqualTo(book.getName());
+        Assertions.assertThat(item.getIsbn()).isEqualTo(book.getIsbn());
     }
 
     @Test
-//    @Rollback(value = false)
+//    @Commit
     @DisplayName("상품 저장 테스트")
     public void itemFindTest() {
         Item book = new Book("JPA", 10000, 10, "김영한", "123");
@@ -57,6 +59,8 @@ class ItemTest {
                 .getResultList();
 
     }
+
+
 
 
 

@@ -12,6 +12,8 @@ import java.util.List;
 
 @Entity
 @Getter
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public abstract class Item {
 
